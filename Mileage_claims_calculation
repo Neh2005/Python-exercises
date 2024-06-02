@@ -1,0 +1,21 @@
+#When using your car for work your employer gives you expenses of 50p per mile for the first 10 miles and 37 p per mile thereafter.
+#Nothing extra is paid for anything above 100 miles.
+
+def milageClaim(miles):
+  if miles>=0 and miles<=10:
+   claim=miles*0.5
+   print("total expense",claim)
+  elif miles>10 and miles<=100:
+   claim=10*0.5 + (miles-10)*0.37
+   print("total expense",claim)
+  elif miles>100:
+   claim=10*0.5+90*0.37
+   print("No money allotted above 100 miles",claim)
+  else:
+   claim=0.0
+   print("miles can't be negative ")
+  return round(claim,2)
+
+if __name__=="__main__":
+    miles = int(input("How many miles? "))
+    print("Claim is for £" + str( milageClaim(miles) )
