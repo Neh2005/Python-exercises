@@ -1,0 +1,25 @@
+def solve(h, m):
+   text=["one", "two", "three", "four", "five", "six", "seven", "eight","nine","ten", "eleven", "twelve", "thirteen", "fourteen", "quarter", "sixteen","seventeen", "eighteen", "nineteen", "twenty", "twenty-one","twenty-two", "twenty-three", "twenty-four", "twentyfive"," twenty-six", "twenty-seven", "twenty-eight", "twenty-nine", "half"]
+
+   op=""
+   if (m == 0):
+      op = text[h - 1] + " o' clock"
+   elif (m == 30):
+      op = text[m - 1]+ " past " + text[h - 1]
+   elif (m == 1):
+      op = text[m - 1] + " minute past " + text[h - 1]
+   elif (m == 15):
+      op = text[m - 1]+ " past " + text[h - 1]
+   elif (m < 30):
+      op = text[m - 1] + " minutes past " + text[h - 1]
+   elif (m==45):
+      op = "quarter to " + text[h]
+   else:
+      op = text[(60 - m)-1] + " minutes to " + text[h]
+   return op
+
+
+if __name__=="__main__":
+   h= int(input("Enter the hour"))
+   m= int(input("Enter the minute"))
+   print(solve(h,m))
