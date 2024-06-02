@@ -1,5 +1,5 @@
 def movie(age):
-  if age<12: 
+  if age<12:
     print("You're too young to watch this movie.") 
     return None
   else:
@@ -12,5 +12,6 @@ def movie(age):
 		  discount=0
 	  price = 15/100*(100-discount)
 	  return price
-
-print(movie(100))
+if __name__=="__main__":
+    age = int(input("Enter your age? "))
+    print(movie(age))
