@@ -1,19 +1,36 @@
 import turtle
-# Set up the turtle
-turtle.speed(0)
-def drawCircle(x, y, r):
-    # Draws a circle with radius r and center (x, y)
-    turtle.penup()
-    turtle.goto(x, y - r)
-    turtle.pendown()
-    turtle.circle(r)
-    if r > 10:  # Recursive base case
-        drawCircle(x+r, y, r/2)
-        drawCircle(x-r, y, r/2)
-        drawCircle(x, y+r, r/2)
-        drawCircle(x, y-r, r/2) 
-       
-# Call the function to draw concentric circles
-drawCircle(0, 0, 200)  # Example: Center at (0, 0) with radius 200
-# Keep the window open until manually closed
-turtle.done()
+
+def koch(x, m):
+    if x < m:
+        turtle.forward(x)
+    else:
+        koch(x / 3, m)
+        turtle.left(60)
+        koch(x / 3, m)
+        turtle.right(120)
+        koch(x / 3, m)
+        turtle.left(60)
+        koch(x / 3, m)
+
+def koch_snowflake(x, m):
+    for _ in range(3):
+        koch(x, m)
+        turtle.right(120)
+
+def main():
+    screen = turtle.Screen()
+    screen.bgcolor("white")
+
+    snowflake_turtle = turtle.Turtle()
+    snowflake_turtle.speed("fastest")
+    snowflake_turtle.penup()
+    snowflake_turtle.goto(-150, 90)
+    snowflake_turtle.pendown()
+
+    colors = ["purple", "blue", "green", "yellow"]
+    koch_snowflake(500, 50)
+
+    turtle.done()
+
+if __name__ == "__main__":
+    main()
